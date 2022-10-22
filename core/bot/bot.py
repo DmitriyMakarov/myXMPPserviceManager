@@ -3,6 +3,7 @@ import config
 from core.service import DataBase as db
 from core.bot import botMenus
 from res.strings import messages_strings
+from core.service import accountsManager as am
 
 cfg = config.Config('res/configs/config.cfg')
 bot = telebot.TeleBot(cfg.token)
@@ -54,6 +55,8 @@ def callbackHandler(message):
         bot.send_message(message.message.chat.id, messages_strings.help[f'help_main_{db.checkUserLang(message.message.chat.id)}'],
                          parse_mode='Markdown')
 
-
+    elif message.data == 'newuser':
+        if db.getXmppAccountInfo(message.message.chat.id)[0] == 'err':
+            am.newAccount(message.message.chat.id)
 
 bot.infinity_polling()

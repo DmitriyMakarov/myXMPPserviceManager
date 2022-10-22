@@ -13,7 +13,6 @@ def checkBotUserExist(user_id):
             result = result.replace('[', '').replace(']', '').replace('(', '').replace(')', '').replace(',', '')
         else:
             result = None
-        print(result)
         cursor.close()
     except sqlite3.Error as error:
         result = 'error'
@@ -95,3 +94,18 @@ def getXmppAccountInfo(user_id):
     except sqlite3.Error as err:
         print(err)
     return func_result, account, pas
+
+
+def newAccount(user_id, user, password):
+    try:
+        cursor = sql_connection.cursor()
+        queri_user_id = f"SELECT id FROM users WHERE user_id='{user_id}'"
+        user_id_res = str(cursor.execute(queri_user_id).fetchall()[0]).replace('(', '').replace(')', '').replace(',',                                                                                                                 '')
+        query_new_acc = f"INSERT INTO accounts (user_id, account_name, password) VALUES ('{user_id_res}', '{user}', '{password}')"
+        cursor.execute(query_new_acc)
+        sql_connection.commit()
+        cursor.close()
+
+
+    except sqlite3.Error as err:
+        print(err)
