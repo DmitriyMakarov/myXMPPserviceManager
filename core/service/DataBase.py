@@ -65,3 +65,33 @@ def setBotUserLang(user_id, lang):
     except sqlite3.Error as error:
         result = error
     return result
+
+
+def getXmppAccountInfo(user_id):
+    account = ''
+    pas = ''
+    try:
+        cursor_acc = sql_connection.cursor()
+        cursor_pas = sql_connection.cursor()
+        query_account = f"SELECT account_name FROM accounts WHERE hidden=0 AND user_id IN (SELECT id FROM users WHERE user_id='{user_id}')"
+        query_pas = f"SELECT password FROM accounts WHERE hidden=0 AND user_id IN (SELECT id FROM users WHERE user_id='{user_id}')"
+        cursor_acc.execute(query_account)
+        cursor_pas.execute(query_pas)
+        result_acc = cursor_acc.fetchall()
+        result_pas = cursor_pas.fetchall()
+        if result_acc == []:
+            func_result = 'err'
+        else:
+            func_result = 'ok'
+            account = str(result_acc).replace('(', '').replace(')', '').replace("'", "").replace(',', '').replace('[',
+                                                                                                                  '').replace(
+                ']', '')
+            pas = str(result_pas).replace('(', '').replace(')', '').replace("'", "").replace(',', '').replace('[',
+                                                                                                              '').replace(
+                ']', '')
+            print('Account: ' + account + '\nPassword: ' + pas)
+        cursor_acc.close()
+        cursor_pas.close()
+    except sqlite3.Error as err:
+        print(err)
+    return func_result, account, pas
