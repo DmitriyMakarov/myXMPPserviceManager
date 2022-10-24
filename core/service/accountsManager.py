@@ -7,3 +7,12 @@ def newAccount():
     password = up.newPassword()
     return user, password
 
+def changePassword(user):
+    password = up.newPassword()
+    db.changePassword(user, password)
+    api.changePassword(db.getXmppAccountInfo(user)[1], db.getXmppAccountInfo(user)[2])
+    return password
+
+def removeAccount(user):
+    api.delAccount(db.getXmppAccountInfo(user)[1])
+    db.hiddAccount(user)

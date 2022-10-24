@@ -12,3 +12,14 @@ main_menu_buttons = {
     'm_menu_button_help_EN': 'Help',
     'm_menu_button_help_RU': 'Помощь',
 }
+
+settings_menu_buttons = {
+    'about_client_EN': 'How to choose a client',
+    'about_client_RU': 'Как выбрать клиента',
+    'how_login_EN': 'Authorization on the server',
+    'how_login_RU': 'Авторизация на сервере',
+    'how_paschange_EN': 'How to change your password',
+    'how_paschange_RU': 'Как сменить пароль',
+    'how_crypto_EN': 'Setting up Encryption',
+    'how_crypto_RU': 'Настройка шифрования'
+}

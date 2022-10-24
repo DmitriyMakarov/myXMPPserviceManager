@@ -31,6 +31,7 @@ def addAccount(user, password):
 
 
 def changePassword(user, password):
+
     data = {
         "username": user,
         "name": "string",
@@ -47,3 +48,15 @@ def changePassword(user, password):
     url = f'http://im.ydns.eu:9090/plugins/restapi/v1/users/{user}'
     respons = requests.put(url, headers=headers, json=data)
     print (respons)
+
+
+def delAccount(user):
+    H = {
+
+        'accept': '*/*',
+        'Authorization': cfg.of_secret
+    }
+    print(user)
+    url_del = f'http://im.ydns.eu:9090/plugins/restapi/v1/users/{user}'
+    response = requests.delete(url_del,headers=H)
+    print(response)

@@ -111,3 +111,24 @@ def newAccount(user_id, user, password):
         result = 'err'
 
     return result
+
+def changePassword(user_id, password):
+    try:
+        cursor = sql_connection.cursor()
+        query = f'update accounts set password="{password}" WHERE user_id IN (SELECT id FROM users WHERE user_id="{user_id}")'
+        cursor.execute(query)
+        sql_connection.commit()
+        cursor.close()
+    except sqlite3.Error as err:
+        print(err)
+
+
+def hiddAccount(user_id):
+    try:
+        cursor = sql_connection.cursor()
+        query = f"UPDATE accounts SET hidden=1 WHERE user_id IN (SELECT id FROM users WHERE user_id='{user_id}')"
+        cursor.execute(query)
+        sql_connection.commit()
+        cursor.close()
+    except sqlite3.Error as err:
+        print(err)

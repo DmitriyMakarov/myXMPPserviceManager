@@ -43,3 +43,13 @@ def mainMenu(user_id, lang):
     bot.send_message(user_id,
                      messages_strings.information[f'main_about_{lang}'],
                      reply_markup=markup, parse_mode='HTML')
+
+
+def settingsMenu(user_id, lang):
+    markup = types.InlineKeyboardMarkup(row_width=1)
+    button_about = types.InlineKeyboardButton(strings.settings_menu_buttons[f'about_client_{lang}'], callback_data='about_client', url='https://telegra.ph/Spisok-komand-bota-10-09')
+    button_howLogin = types.InlineKeyboardButton(strings.settings_menu_buttons[f'how_login_{lang}'], callback_data='how_login')
+    button_howPasChange = types.InlineKeyboardButton(strings.settings_menu_buttons[f'how_paschange_{lang}'], callback_data='how_pas')
+    button_howCrypto = types.InlineKeyboardButton(strings.settings_menu_buttons[f'how_crypto_{lang}'], callback_data='how_crypto')
+    markup.add(button_about, button_howLogin, button_howPasChange, button_howCrypto)
+    bot.send_message(user_id, messages_strings.settings[f'settings_about_{lang}'], reply_markup=markup)

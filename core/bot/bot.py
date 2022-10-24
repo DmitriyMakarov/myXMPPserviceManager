@@ -68,6 +68,22 @@ def callbackHandler(message):
             bot.send_message(message.message.chat.id, messages_strings.accounts[f'newuser_error_{db.checkUserLang(message.message.chat.id)}'])
 
     elif message.data == 'passwd':
-        api.changePassword(db.getXmppAccountInfo(message.message.chat.id)[1], upg.newPassword())
-        print(db.getXmppAccountInfo(message.message.chat.id))
+        if db.getXmppAccountInfo(message.message.chat.id)[0] != 'err':
+            am.changePassword(message.message.chat.id)
+            bot.send_message(message.message.chat.id, messages_strings.password[
+                f'new_pas_msg_{db.checkUserLang(message.message.chat.id)}'] + '<code>' + db.getXmppAccountInfo(message.message.chat.id)[2] + '</code>',
+                             parse_mode='HTML')
+        elif db.getXmppAccountInfo(message.message.chat.id)[0] == 'err':
+            bot.send_message(message.message.chat.id, messages_strings.password[f'new_pas_err_msg_{db.checkUserLang(message.message.chat.id)}'])
+
+    elif message.data == 'remove':
+        if db.getXmppAccountInfo(message.message.chat.id)[0] != 'err':
+            am.removeAccount(message.message.chat.id)
+            bot.send_message(message.message.chat.id, messages_strings.accounts[f'del_account_{db.checkUserLang(message.message.chat.id)}'])
+        else:
+            bot.send_message(message.message.chat.id, messages_strings.password[f'new_pas_err_msg_{db.checkUserLang(message.message.chat.id)}'])
+
+    elif message.data == 'settings':
+        botMenus.settingsMenu(message.message.chat.id, db.checkUserLang(message.message.chat.id))
+
 bot.infinity_polling()

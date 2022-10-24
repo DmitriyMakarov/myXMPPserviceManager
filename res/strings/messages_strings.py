@@ -21,5 +21,19 @@ accounts = {
     'new_account_next_EN': 'Now you can go to the client program and enter the authorization data.\nTo ensure private communication:\nAndroid - <a href="https://f-droid.org/ru/packages/eu.siacs.conversations/">Conversation</a>\nIOS - <a href="https://apps.apple.com/ru/app/chatsecure/id464200063">ChatSecure Messenger</a>',
     'new_account_next_RU': 'Теперь можно перейти в клиентскую программу и ввести данные для авторизации.\nДля обеспечения приватного общения:\nAndroid - <a href="https://f-droid.org/ru/packages/eu.siacs.conversations/">Conversation</a>\nIOS - <a href="https://apps.apple.com/ru/app/chatsecure/id464200063">ChatSecure Messenger</a> ',
     'newuser_error_EN': 'You already have an account.\If you forgot your password - use the "Change password" function\nYou can register an account if you delete an existing one.\n\n You can get information about your accounts in the Info menu',
-    'newuser_error_RU': 'У вас уже есть учетная запись.\nЕсли вы забыли пароль - воспользуйтесь функцией "Смена пароля"\nВы можете зарегистрировать учетную запись, если удалите имеющуюся.\n\nИнформацию о ваших учетных записях вы можете получить в меню Info'
+    'newuser_error_RU': 'У вас уже есть учетная запись.\nЕсли вы забыли пароль - воспользуйтесь функцией "Смена пароля"\nВы можете зарегистрировать учетную запись, если удалите имеющуюся.\n\nИнформацию о ваших учетных записях вы можете получить в меню Info',
+    'del_account_EN': 'The account has been deleted, now you can create a new one.',
+    'del_account_RU': 'Аккаунт удален, теперь вы можете создать новый.'
+}
+
+password = {
+    'new_pas_msg_EN': 'Your new password: ',
+    'new_pas_msg_RU': 'Ваш новый пароль: ',
+    'new_pas_err_msg_EN': 'You don`t have an account in the service yet, create it with the help of "New account"',
+    'new_pas_err_msg_RU': 'У вас еще нет аккаунта в сервисе, создайте его с помощь "Новый аккаунт"'
+}
+
+settings = {
+    'settings_about_EN': 'This section contains information on how to configure the client program for secure communication',
+    'settings_about_RU': 'В это разделе информация о том как настроить клиентскую программу для безопасного общения'
 }
