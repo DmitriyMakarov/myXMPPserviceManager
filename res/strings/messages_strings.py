@@ -12,3 +12,14 @@ help = {
     'help_main_EN': 'A bot to provide secure untraceable communication.\n\n Menu function:\nInfo - shows information about your accounts inside the service, if you did not delete them from the bot`s database\nNew account - creates a new account in the service if you do not have them\nPassword change - allows you to change the account password on the server if you did not delete information about it from the bot\nDelete account - deletes the account from the server, including all correspondence and all information about devices\nSettings - shows instructions for configuring the client program\nHelp - displays information about the use of the bot, links to documentation on working with the message service and recommendations for safe communication',
     'help_main_RU': 'Бот для обеспечения безопасного неотслеживаемого общения.\n\nФункционал меню:\n**Info** - показывает информацию о ваших аккаунтах внутри сервиса, если вы не стали удалять их из базы данных бота\n**Новый аккаунт** - создает новый аккаунт в сервисе, если у вас их нет\n**Смена пароля** - позволяет сменить пароль аккаунта на сервере, если вы не удаляли информацию о нем из бота\n**Удалить аккаунт** - удаляет аккаунт с сервера, включая все переписки и всю информацию об устройствах\n**Настройки** - показывает инструкцию по настройке клиентской программы\n**Помощь** - выводит информацию об использовании бота, ссылки на документацию по работе с сервисом сообщений и рекомендации по безопасному общению  '
 }
+
+accounts = {
+    'new_user_info_EN': 'User name in the service: ',
+    'new_user_info_RU': 'Имя пользователя в сервисе: ',
+    'new_user_pas_EN': 'User password: ',
+    'new_user_pas_RU': 'Пароль пользователя: ',
+    'new_account_next_EN': 'Now you can go to the client program and enter the authorization data.\nTo ensure private communication:\nAndroid - <a href="https://f-droid.org/ru/packages/eu.siacs.conversations/">Conversation</a>\nIOS - <a href="https://apps.apple.com/ru/app/chatsecure/id464200063">ChatSecure Messenger</a>',
+    'new_account_next_RU': 'Теперь можно перейти в клиентскую программу и ввести данные для авторизации.\nДля обеспечения приватного общения:\nAndroid - <a href="https://f-droid.org/ru/packages/eu.siacs.conversations/">Conversation</a>\nIOS - <a href="https://apps.apple.com/ru/app/chatsecure/id464200063">ChatSecure Messenger</a> ',
+    'newuser_error_EN': 'You already have an account.\If you forgot your password - use the "Change password" function\nYou can register an account if you delete an existing one.\n\n You can get information about your accounts in the Info menu',
+    'newuser_error_RU': 'У вас уже есть учетная запись.\nЕсли вы забыли пароль - воспользуйтесь функцией "Смена пароля"\nВы можете зарегистрировать учетную запись, если удалите имеющуюся.\n\nИнформацию о ваших учетных записях вы можете получить в меню Info'
+}

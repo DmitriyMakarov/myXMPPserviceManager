@@ -88,7 +88,6 @@ def getXmppAccountInfo(user_id):
             pas = str(result_pas).replace('(', '').replace(')', '').replace("'", "").replace(',', '').replace('[',
                                                                                                               '').replace(
                 ']', '')
-            print('Account: ' + account + '\nPassword: ' + pas)
         cursor_acc.close()
         cursor_pas.close()
     except sqlite3.Error as err:
@@ -105,7 +104,10 @@ def newAccount(user_id, user, password):
         cursor.execute(query_new_acc)
         sql_connection.commit()
         cursor.close()
-
+        result = 'ok'
 
     except sqlite3.Error as err:
         print(err)
+        result = 'err'
+
+    return result

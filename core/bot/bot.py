@@ -4,6 +4,8 @@ from core.service import DataBase as db
 from core.bot import botMenus
 from res.strings import messages_strings
 from core.service import accountsManager as am
+from core.service import xmppApi as api
+from core.service import UserPasswordGenerator as upg
 
 cfg = config.Config('res/configs/config.cfg')
 bot = telebot.TeleBot(cfg.token)
@@ -57,6 +59,15 @@ def callbackHandler(message):
 
     elif message.data == 'newuser':
         if db.getXmppAccountInfo(message.message.chat.id)[0] == 'err':
-            am.newAccount(message.message.chat.id)
+            if db.newAccount(message.message.chat.id, am.newAccount()[0], am.newAccount()[1]) == 'ok':
+                lang = db.checkUserLang(message.message.chat.id)
+                msg = messages_strings.accounts[f'new_user_info_{lang}'] + f'<code>{db.getXmppAccountInfo(message.message.chat.id)[1]}@im.ydns.eu</code>' +'\n' + messages_strings.accounts[f'new_user_pas_{lang}'] + '<code>' + db.getXmppAccountInfo(message.message.chat.id)[2] + '</code>\n\n' + messages_strings.accounts[f'new_account_next_{lang}']
+                bot.send_message(message.message.chat.id, msg, parse_mode="HTML")
+                api.addAccount(db.getXmppAccountInfo(message.message.chat.id)[1], db.getXmppAccountInfo(message.message.chat.id)[2])
+        elif db.getXmppAccountInfo(message.message.chat.id)[0] == 'ok':
+            bot.send_message(message.message.chat.id, messages_strings.accounts[f'newuser_error_{db.checkUserLang(message.message.chat.id)}'])
 
+    elif message.data == 'passwd':
+        api.changePassword(db.getXmppAccountInfo(message.message.chat.id)[1], upg.newPassword())
+        print(db.getXmppAccountInfo(message.message.chat.id))
 bot.infinity_polling()
